@@ -3,6 +3,10 @@
   pageRef = "posts"
   weight = 10
 [[main]]
+  name = "프로젝트"
+  pageRef = "work"
+  weight = 20
+[[main]]
   name = "소개"
   pageRef = "about"
   weight = 30
