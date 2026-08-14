@@ -7,6 +7,11 @@
   pageRef = "work"
   weight = 20
 [[main]]
+  name = "포트폴리오"
+  pageRef = "portfolio"
+  weight = 25
+
+[[main]]
   name = "소개"
   pageRef = "about"
   weight = 30
