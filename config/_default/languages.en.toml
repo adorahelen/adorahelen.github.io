@@ -1,0 +1,19 @@
+languageCode = "en"
+languageName = "EN"
+weight = 1
+title = "Kangmin Kim"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  dateFormat = "2 January 2006"
+  description = "Security engineer — SIEM/SOAR, endpoint telemetry, and the security of LLM systems."
+
+[params.author]
+  name = "Kangmin Kim"
+  headline = "Security Engineer · SIEM/SOAR · LLM Security"
+  bio = "I build the systems I write about, then measure what they actually do."
+  links = [
+    { github = "https://github.com/adorahelen" },
+    { email = "mailto:kmkim26@outlook.com" },
+  ]

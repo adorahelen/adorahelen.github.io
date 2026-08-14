@@ -1,0 +1,18 @@
+languageCode = "ko"
+languageName = "KO"
+weight = 2
+title = "김강민"
+
+[params]
+  displayName = "KO"
+  isoCode = "ko"
+  dateFormat = "2006년 1월 2일"
+  description = "보안 엔지니어 — SIEM/SOAR, 엔드포인트 텔레메트리, LLM 시스템 보안."
+
+[params.author]
+  name = "김강민"
+  headline = "보안 엔지니어 · SIEM/SOAR · LLM 보안"
+  links = [
+    { github = "https://github.com/adorahelen" },
+    { email = "mailto:kmkim26@outlook.com" },
+  ]

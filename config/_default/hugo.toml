@@ -1,0 +1,9 @@
+baseURL = "https://adorahelen.github.io/"
+theme = "congo"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+summaryLength = 0
+paginate = 10
+[taxonomies]
+  tag = "tags"
