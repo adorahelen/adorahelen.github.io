@@ -10,7 +10,9 @@ An 18-slide deck covering the four systems described on the [Work](/work/) page 
 
 > **The deck is in Korean.** The architecture diagrams, measurements and stack labels read across languages; the prose does not. An English edition is planned.
 
-**[Download the deck (PDF, 18 slides, 1.1 MB)](/portfolio/kangmin-kim-portfolio-ko.pdf)** · [PowerPoint source](/portfolio/kangmin-kim-portfolio-ko.pptx)
+**[Download the deck (PowerPoint, 18 slides)](/portfolio/kangmin-kim-portfolio-ko.pptx)**
+
+A PDF will replace this shortly. The one published earlier was exported on Linux, where the Korean-Latin spacing rules of the converter inserted gaps that are not in the file — so it is down rather than misrepresenting the deck.
 
 ## What's in it
 

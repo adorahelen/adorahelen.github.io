@@ -8,7 +8,9 @@ showReadingTime: false
 
 [프로젝트](/ko/work/) 페이지에서 다룬 네 개의 시스템 — 자작 XDR, Go로 다시 지은 SIEM, User-mode EDR 센서, 온프레미스 LLM 에이전트 콘솔 — 에 디지털 포렌식 연구와 침해사고 대응 사례를 더한 18장짜리 덱입니다.
 
-**[덱 내려받기 (PDF, 18장, 1.1 MB)](/portfolio/kangmin-kim-portfolio-ko.pdf)** · [PowerPoint 원본](/portfolio/kangmin-kim-portfolio-ko.pptx)
+**[덱 내려받기 (PowerPoint, 18장)](/portfolio/kangmin-kim-portfolio-ko.pptx)**
+
+PDF는 곧 올립니다. 먼저 올렸던 PDF는 리눅스에서 변환한 것이라 변환기가 한글·영문 자간 규칙을 적용해 파일에 없는 공백을 넣었습니다. 덱을 잘못 보여주느니 내려둡니다.
 
 ## 구성
 
