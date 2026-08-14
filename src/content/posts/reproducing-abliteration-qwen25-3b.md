@@ -11,6 +11,8 @@ tags:
 description: "I reproduced the 'refusal is a single direction' result (Arditi et al., 2024) on Qwen2.5-3B-Instruct and measured what actually happens: refusal drops 1.00 to 0.00, but the crude copy-paste version also measurably degrades reasoning — and the damage concentrates on the exact topics the refusal direction was built from."
 ---
 
+> 🇰🇷 **[이 글의 한국어판 →](/posts/reproducing-abliteration-qwen25-3b-ko/)**
+
 ## TL;DR
 
 - Refusal in an instruction-tuned LLM is largely mediated by a **single direction** in the residual stream. Ablating it drops the harmful-prompt refusal rate from **1.00 → 0.00** with no retraining. The Arditi et al. (2024) result reproduces cleanly.
@@ -117,17 +119,15 @@ One number, two completely different states. If refusal rate is your only gauge,
 - Permanent surgery touches only `o_proj` / `down_proj`, avoiding embedding and tied weights — which is why the permanent number (0.04) sits slightly above the inference-time one (0.00).
 - No general-capability benchmark (MMLU etc.) — reasoning damage was observed through probes, not scored.
 
-## Repro
+## Reproducing this
 
-Code, raw `result.json`, and the probe scripts: **[github.com/adorahelen/abliteration-repro](https://github.com/adorahelen/abliteration-repro)**
+I'm not publishing the harness — the harmful prompt set and the weight-surgery script are the parts I'd rather not hand out packaged. Everything needed to rebuild it is in the Method section above, and it is not much code:
 
-```bash
-git clone https://github.com/adorahelen/abliteration-repro
-cd abliteration-repro
-pip install torch transformers accelerate safetensors
-python abliterate.py --save   # sweep + measure
-python probe.py               # capability comparison
-```
+1. Run matched harmful/harmless prompts through the model, grab the last-token residual at each layer, take the difference of means, normalize. That's `r`.
+2. Register a forward hook on every layer that projects `r` out of the residual stream. Sweep the layer, score refusal on a held-out split, keep the best.
+3. For the permanent version, orthogonalize `r` out of each layer's `o_proj` and `down_proj` weight matrices.
+
+If you rebuild it, hold two things fixed or your numbers won't mean anything: **sweep the layer** (see Result 1), and **measure capability separately from refusal rate** (see Result 4).
 
 ---
 
