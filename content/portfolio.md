@@ -12,6 +12,8 @@ An 18-slide deck covering the four systems described on the [Work](/work/) page 
 
 **[Download the deck (PowerPoint, 18 slides)](/portfolio/kangmin-kim-portfolio-ko.pptx)**
 
+The deck is set in [Pretendard](https://github.com/orioncactus/pretendard) (free, OFL). Install it before opening, or your viewer will substitute a fallback and the line breaks will shift.
+
 A PDF will replace this shortly. The one published earlier was exported on Linux, where the Korean-Latin spacing rules of the converter inserted gaps that are not in the file — so it is down rather than misrepresenting the deck.
 
 ## What's in it
@@ -20,7 +22,7 @@ A PDF will replace this shortly. The one published earlier was exported on Linux
 | --- | --- |
 | 1–3 | Positioning, profile, project map |
 | 4–5 | **Self-built XDR** — four-layer monorepo, six-stage automated response chain |
-| 6–7 | **signum** — commercial SIEM reverse-engineered into eleven Go microservices |
+| 6–7 | **LLM alignment** — reproducing the "refusal is one direction" result and measuring what it costs |
 | 8–9 | **edr-lab** — Ring 3 sensor, and the Ring 0 line I deliberately did not cross |
 | 10–11 | **security-labs** — Threads app forensics, the CISC-W'25 paper and award |
 | 12–13 | **agent-console** — cartridge architecture, hardware-tier install |

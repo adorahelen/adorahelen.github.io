@@ -10,6 +10,8 @@ showReadingTime: false
 
 **[덱 내려받기 (PowerPoint, 18장)](/portfolio/kangmin-kim-portfolio-ko.pptx)**
 
+덱은 [Pretendard](https://github.com/orioncactus/pretendard)(무료·OFL)로 조판했습니다. 열기 전에 설치하세요 — 없으면 대체 폰트로 렌더되어 줄바꿈이 밀립니다.
+
 PDF는 곧 올립니다. 먼저 올렸던 PDF는 리눅스에서 변환한 것이라 변환기가 한글·영문 자간 규칙을 적용해 파일에 없는 공백을 넣었습니다. 덱을 잘못 보여주느니 내려둡니다.
 
 ## 구성
@@ -18,7 +20,7 @@ PDF는 곧 올립니다. 먼저 올렸던 PDF는 리눅스에서 변환한 것�
 | --- | --- |
 | 1–3 | 포지셔닝, 프로필, 프로젝트 맵 |
 | 4–5 | **자작 XDR** — 4계층 모노레포, 자동 대응 체인 6단계 |
-| 6–7 | **signum** — 상용 SIEM 역분석 후 Go 마이크로서비스 11개로 재설계 |
+| 6–7 | **LLM 정렬 취약성** — "거부는 단일 방향" 논문 재현과 그 대가 측정 |
 | 8–9 | **edr-lab** — Ring 3 센서, 그리고 일부러 넘지 않은 Ring 0 선 |
 | 10–11 | **security-labs** — Threads 앱 포렌식, CISC-W'25 논문과 원장상 |
 | 12–13 | **agent-console** — 카트리지 구조, 하드웨어 티어 설치 |
