@@ -11,7 +11,7 @@ tags:
 summary: "\"거부는 단일 방향이 매개한다\"(Arditi et al., 2024)를 Qwen2.5-3B-Instruct에서 직접 재현하고 측정했다. 거부율은 1.00에서 0.00으로 떨어진다. 그런데 복붙 버전은 추론 능력도 같이 깎아먹고, 그 손상이 하필 거부 방향을 뽑아낸 그 주제에 몰린다."
 ---
 
-> 🇺🇸 **[English version of this post →](/posts/reproducing-abliteration-qwen25-3b/)**
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/reproducing-abliteration-qwen25-3b/)**
 
 ## 세 줄 요약
 

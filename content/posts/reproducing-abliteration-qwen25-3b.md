@@ -11,7 +11,7 @@ tags:
 summary: "I reproduced the 'refusal is a single direction' result (Arditi et al., 2024) on Qwen2.5-3B-Instruct and measured what actually happens: refusal drops 1.00 to 0.00, but the crude copy-paste version also measurably degrades reasoning — and the damage concentrates on the exact topics the refusal direction was built from."
 ---
 
-> 🇰🇷 **[이 글의 한국어판 →](/posts/reproducing-abliteration-qwen25-3b-ko/)**
+> 🇰🇷 **[이 글의 한국어판 →](/ko/posts/reproducing-abliteration-qwen25-3b/)**
 
 ## TL;DR
 
