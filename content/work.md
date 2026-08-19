@@ -26,14 +26,14 @@ Ten containers running, exactly one exposed port; everything else binds to local
 
 ## SIEM rebuilt in Go
 
-**Reverse-engineered a commercial SIEM, then rebuilt its functional axes as microservices.**
+**Took the functional axes a commercial SIEM covers and rebuilt them as microservices.**
 
-- Decompiled 128 OSGi bundles (22,844 `.java` files), triaged them into four classes, and produced a bundle-by-bundle mapping table — including why each unimplemented bundle was skipped.
+- Mapped the product surface into 128 functional items, triaged them into four classes by whether they were worth rebuilding, and kept an item-by-item mapping table — including why each unimplemented item was skipped. Scope discipline was the point: a rewrite without it becomes a clone with no opinion.
 - Rebuilt as **eleven Go services**: ingest gateway, parser/normalizer, storage writer, search, detection/correlation, alerting, workflow engine, integration adapter, config/identity, forwarder, console.
 - **Wrote a detection-rule DSL and its parser**, with staged tests. I'm not writing rules in someone else's language; I designed the language.
 - Added what the original lacked: a SOAR workflow engine, CTI over TAXII 2.1 with STIX parsing, and JWT + LDAP/AD + TOTP MFA.
 
-103 of 128 bundle functions implemented; 22 of 22 end-to-end tests passing.
+103 of 128 functional items implemented; 22 of 22 end-to-end tests passing.
 
 **Also in this project**: I found an unauthenticated ingest endpoint in my own test binary, and documented the whole incident-response path — reproduction, binary string analysis proving no auth existed, scope of what had been collected in plaintext, server-side block, then the code-level fix. Finding it in my own system was the point.
 

@@ -11,7 +11,7 @@ Outside work I build the same categories of system from scratch, because that is
 
 **Self-built XDR** — Collection, detection, analysis and response as four layers on a single host, with a six-stage automated response chain and a SOC console. Ten containers, one exposed port.
 
-**SIEM rebuilt in Go** — Reverse-engineered a commercial SIEM (128 OSGi bundles, decompiled) and rebuilt the same functional axes as eleven Go microservices, including a detection-rule DSL and its parser.
+**SIEM rebuilt in Go** — Took the functional axes a commercial SIEM covers and rebuilt them from scratch as eleven Go microservices, including a detection-rule DSL and its parser.
 
 **User-mode EDR sensor** — 2,840 lines of C++ observing processes, files, network and registry from Ring 3, written to find out exactly where Ring 3 stops being enough. Scored against Sysmon's event set, gaps published.
 
