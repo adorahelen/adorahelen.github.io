@@ -9,6 +9,8 @@ tags:
 summary: "AI가 표적인 공격에 블루팀은 무엇으로 대응하는가. 결론부터 말하면 가드레일과 필터는 확률적 완화 계층이지 보안 경계가 아니다 — 우회가 실증으로 반복 확인되기 때문이다. 그럼 경계는 어디에 두어야 하는지를 정리했다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/ai-system-defense/)**
+
 ---
 
 > **맥락**: 블루팀 3축 중 두 번째. [가이드](/ko/posts/kisa-ai-redteaming-guide/)·[매뉴얼](/ko/posts/kisa-ai-threat-response-manual/)·[멀티모달/에이전트](/ko/posts/multimodal-agent-red-teaming/) 노트가 "AI를 어떻게 공격하는가"였다면, 이 글은 **그 공격(jailbreak·프롬프트 인젝션·데이터 오염·모델 공급망)을 어떻게 방어하는가**를 정리한다. 전통 방어 규율은 [전통적 블루티밍](/ko/posts/traditional-blue-teaming/).

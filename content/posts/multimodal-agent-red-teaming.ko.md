@@ -10,6 +10,8 @@ tags:
 summary: "텍스트 LLM을 넘어 이미지·도구·메모리를 가진 멀티모달 에이전트로 가면 공격 표면이 확장된다. 근본 원인은 하나다 — 신뢰할 수 없는 입력(이미지 픽셀·외부 문서·도구 설명)을 데이터가 아니라 명령으로 취급하는 것."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/multimodal-agent-red-teaming/)**
+
 ---
 
 > **맥락**: [가이드](/ko/posts/kisa-ai-redteaming-guide/)·[매뉴얼](/ko/posts/kisa-ai-threat-response-manual/)이 주로 텍스트 LLM을 표적으로 다뤘다면, 이 글은 그 경계를 넘어선 **멀티모달(이미지·음성) + 에이전트(툴사용·자율)** 공격 표면을 정리한다. 실무 층은 [AI 레드티밍 실무](/ko/posts/ai-red-teaming-practice/).

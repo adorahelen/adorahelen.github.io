@@ -10,6 +10,8 @@ tags:
 summary: "AI를 이용한 방어 — 2025년 AI SOC는 벤더 데모를 넘어 트리아지·헌팅·룰 생성을 실제로 자동화하는 제품으로 나왔다. offensive AI의 정확한 방어 대응물로서 무엇이 되고 무엇이 아직 안 되는지, 퍼플팀 관점까지."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/ai-augmented-defense-ai-soc/)**
+
 ---
 
 > **맥락**: 블루팀 3축 중 세 번째. [AI를 이용한 레드티밍(offensive AI)](/ko/posts/ai-augmented-red-teaming/)의 정확한 방어 대응물 — **AI를 공격 도구가 아니라 방어 도구로 써서 SOC·탐지·대응을 자동화**하는 축. 전통 방어는 [전통적 블루티밍](/ko/posts/traditional-blue-teaming/), AI 시스템 자체 방어는 [AI 시스템 방어](/ko/posts/ai-system-defense/).

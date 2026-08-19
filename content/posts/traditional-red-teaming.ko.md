@@ -9,6 +9,8 @@ tags:
 summary: "AI 레드티밍을 이해하려면 전통 레드티밍이 무엇이었는지가 먼저다. 방법론·표준·블루팀 연결을 정리했다. 레드팀의 성공 기준은 취약점 발견이 아니라, 조직의 사람·프로세스·기술로 이뤄진 탐지·대응 체계가 실제로 작동하는지다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/traditional-red-teaming/)**
+
 ---
 
 > **맥락**: AI 대상 레드티밍 노트([레드티밍 가이드](/ko/posts/kisa-ai-redteaming-guide/) / [위협 대응 매뉴얼](/ko/posts/kisa-ai-threat-response-manual/))가 "AI가 표적"인 반면, 이 글은 그 뿌리인 **전통적 공격보안(offensive security) 규율**을 정리한다. 세 축 중 첫 번째: **AI가 표적 / AI가 도구 / 전통 대상**.

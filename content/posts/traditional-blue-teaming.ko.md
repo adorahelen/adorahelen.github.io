@@ -10,6 +10,8 @@ tags:
 summary: "SOC·탐지 엔지니어링·DFIR·헌팅·CTI를 하나로 정리했다. 블루팀의 성숙도는 알럿을 얼마나 많이 만드는가가 아니라, 공격자 TTP를 어느 추상화 수준에서 탐지하는가(Pyramid of Pain의 위쪽)로 결정된다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/traditional-blue-teaming/)**
+
 ---
 
 > **맥락**: [전통 레드티밍](/ko/posts/traditional-red-teaming/)의 방어 대응물. 레드팀이 "공격자처럼 사고해 통제를 검증"한다면, 블루팀은 그 검증 대상인 **탐지·대응 체계 자체를 설계·운영**한다. 블루팀 3축 중 첫 번째: **전통 대상 / AI 시스템 방어 / AI를 도구로 쓰는 방어**. 짝: [AI 시스템 방어](/ko/posts/ai-system-defense/)·[AI 활용 방어](/ko/posts/ai-augmented-defense-ai-soc/).

@@ -9,6 +9,8 @@ tags:
 summary: "AI가 표적인 경우와 AI가 도구인 경우는 다르다. 이 글은 후자 — 자율 공격보안(offensive AI)이 2025~26년에 개념증명을 넘어 측정 가능한 실전 역량에 도달한 지점과, 그 능력의 한계를 함께 정리했다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/ai-augmented-red-teaming/)**
+
 ---
 
 > **맥락**: 세 축 중 두 번째. **AI가 표적**(jailbreak/프롬프트 인젝션 → [가이드](/ko/posts/kisa-ai-redteaming-guide/)·[매뉴얼](/ko/posts/kisa-ai-threat-response-manual/))이 아니라, **AI를 공격 도구로 써서 전통(비-AI) 표적을 공격**하는 축. 전통 레드팀 규율은 [전통적 레드티밍](/ko/posts/traditional-red-teaming/).

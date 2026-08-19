@@ -9,6 +9,8 @@ tags:
 summary: "앞선 글들이 무엇을 공격하는가였다면 이 글은 실제로 어떻게 운영하는가다. 도구·조직 방법론·규제·커뮤니티를 정리했다. AI 레드티밍은 인간 전문가의 창의성, 자동화의 커버리지, 표준·규제의 요구사항이 맞물린 자리에 있다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/ai-red-teaming-practice/)**
+
 ---
 
 > **맥락**: 앞선 글들이 "무엇을 공격하는가(위협·연구 계보)"였다면, 이 글은 **"AI 레드티밍을 실제로 어떻게 수행하는가"** 를 정리한다. 자동화 도구 생태계 → 프론티어 랩의 조직 방법론 → 규제상 의무 → 공개 커뮤니티(GRT) 순. 짝: [멀티모달·에이전트 확장 표면](/ko/posts/multimodal-agent-red-teaming/).
