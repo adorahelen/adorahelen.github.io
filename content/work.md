@@ -9,9 +9,11 @@ showTableOfContents: true
 
 Four systems I built outside of work, in the categories I work in professionally. Each one exists because I wanted to know where the thing breaks — so what follows includes the limits, not just the features.
 
-Most repositories are private; I can grant access on request.
+Two of these are public: **[siem-trinity-public](https://github.com/adorahelen/siem-trinity-public)** (the self-built XDR) and **[ai-console-public](https://github.com/adorahelen/ai-console-public)** (the on-prem agent console, MIT). The rest are private — I can grant access on request.
 
 ## Self-built XDR
+
+> Repository: **[siem-trinity-public](https://github.com/adorahelen/siem-trinity-public)** · public
 
 **Collection → detection → analysis → response, four layers on one host, plus a SOC console.**
 
@@ -49,6 +51,8 @@ Ten containers running, exactly one exposed port; everything else binds to local
 **Scored against Sysmon's event set: 5 covered, 3 partial, 6 not covered** — module loads, injection and `lsass` access are the blind spots, and they're published as blind spots. The repository is 298,925 lines of C/C++; **2,840 of those are mine** and the README says so before anyone asks.
 
 ## On-prem LLM agent console
+
+> Repository: **[ai-console-public](https://github.com/adorahelen/ai-console-public)** · public · MIT
 
 **The engine is fixed; the domain is a cartridge.**
 

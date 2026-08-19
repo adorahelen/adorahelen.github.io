@@ -9,9 +9,11 @@ showTableOfContents: true
 
 일 밖에서 만든 네 개의 시스템입니다. 직업적으로 다루는 것과 같은 범주이고, 전부 "이게 어디서 깨지는지" 알고 싶어서 만들었습니다. 그래서 아래에는 기능만이 아니라 한계도 같이 적혀 있습니다.
 
-대부분의 저장소는 비공개입니다. 요청하시면 열람 권한을 드립니다.
+이 중 둘은 공개돼 있습니다 — **[siem-trinity-public](https://github.com/adorahelen/siem-trinity-public)**(자작 XDR)과 **[ai-console-public](https://github.com/adorahelen/ai-console-public)**(온프레미스 에이전트 콘솔, MIT). 나머지는 비공개이고, 요청하시면 열람 권한을 드립니다.
 
 ## 자작 XDR
+
+> 저장소: **[siem-trinity-public](https://github.com/adorahelen/siem-trinity-public)** · 공개
 
 **수집 → 탐지 → 분석 → 대응, 한 호스트 위의 4계층 + SOC 콘솔.**
 
@@ -49,6 +51,8 @@ showTableOfContents: true
 **Sysmon 이벤트 기준 자체 채점: 5 커버 · 3 부분 · 6 미커버** — 모듈 로드, 인젝션, `lsass` 접근이 사각이고, 사각인 채로 공개했습니다. 저장소 전체는 C/C++ 298,925줄이지만 **그중 제 코드는 2,840줄**이고, 누가 묻기 전에 README가 먼저 그렇게 적고 있습니다.
 
 ## 온프레미스 LLM 에이전트 콘솔
+
+> 저장소: **[ai-console-public](https://github.com/adorahelen/ai-console-public)** · 공개 · MIT
 
 **엔진은 고정, 도메인은 카트리지.**
 
