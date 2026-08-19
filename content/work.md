@@ -56,7 +56,7 @@ Ten containers running, exactly one exposed port; everything else binds to local
 
 **The engine is fixed; the domain is a cartridge.**
 
-- Three slots — prompts, knowledge and model — each swappable through a path that already existed in the production system it descends from. Changing domain requires no code change.
+- Three slots — prompts, knowledge and model — each swappable through a path the engine already exposes. Changing domain requires no code change.
 - `install.sh` detects VRAM and RAM, picks a hardware tier, selects a model preset, and registers a service. One command, end to end.
 - Retrieval is BGE-M3 dense plus ColBERT with two-way reciprocal rank fusion; the repository still contains the variants I compared to get there.
 - Knowledge provenance is traced per file — for the security cartridge, 3,955 documents broken down as 1,575 public corpus, 1,930 self-authored, 301 model-generated, with license review recorded.
