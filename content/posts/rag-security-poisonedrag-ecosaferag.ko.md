@@ -10,6 +10,8 @@ tags:
 summary: "RAG 지식베이스에 악성 문서 5개만 넣으면 LLM이 공격자가 원하는 답을 90% 이상 확률로 생성한다(PoisonedRAG, USENIX Security 2025). 방어 쪽 EcoSafeRAG는 문장 수준 분할과 미끼 기반 컨텍스트 다양성 검사로 LLM 내부 지식에 의존하지 않고 이를 탐지한다. 공격과 방어를 같이 읽었다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/rag-security-poisonedrag-ecosaferag/)**
+
 ---
 
 ## 논문 1: PoisonedRAG — RAG 지식 오염 공격

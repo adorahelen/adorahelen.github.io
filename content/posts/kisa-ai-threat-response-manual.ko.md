@@ -10,6 +10,8 @@ tags:
 summary: "KISA·과기정통부 「AI 보안 위협 대응 매뉴얼」(2026.07)은 레드티밍 가이드의 짝 문서다. OWASP LLM Top 10 2025 · NIST AML · MITRE ATLAS 세 프레임워크와의 정합을 확인하고, 앞 글에서 심화한 GCG·PoisonedRAG 계열이 매뉴얼의 어느 항목에 대응하는지 연결했다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/kisa-ai-threat-response-manual/)**
+
 ---
 
 > **문서**: KISA·과기정통부, 「AI 보안 위협 대응 매뉴얼」 (KISA AI Security Red Team 2026-01, 2026.07)
@@ -172,7 +174,7 @@ summary: "KISA·과기정통부 「AI 보안 위협 대응 매뉴얼」(2026.07)
 1. **두 문서는 세트로 써야 완성** — 매뉴얼(위협 카탈로그+진단코드) + 가이드(레드팀 운영). 진단 원전은 매뉴얼 별첨2.
 2. **H축은 법으로도 설명된다** — 기본법 제2조(고영향 10영역)=산업 시나리오, 제32조(프론티어 10²⁶ FLOP 안전성 의무)=H01/H02. 매뉴얼 참고문헌의 조문 병기(제2조·제32조)는 적용대상이 다른 두 트리거를 혼동시키지만, 분리하면 오히려 문서 구조가 정확히 설명된다.
 3. **프론티어 통제배포가 2026 새 규범** — GPT-5.5-Cyber TAC·Anthropic Mythos/Glasswing = "이중용도 사이버 역량을 검증된 방어자에게만." 매뉴얼 32개 산업 시나리오 전부의 종착점(취약점 자율발굴→무기화 수시간)이 이 위협의 산업 파급판이며, 앞 글의 자동공격 연구(GCG→Subspace Rerouting)가 SCADA·펌웨어·OpenSSL로 확산된 형태.
-4. **정렬은 다층 방어의 일부** — RLHF~Unlearning 6기법 어느 것도 단독 해결책 아님(앞 글와 동일 결론).
+4. **정렬은 다층 방어의 일부** — RLHF~Unlearning 6기법 어느 것도 단독 해결책 아님(앞 글과 동일 결론).
 5. **참고문헌 그래프가 하나로 연결** — 두 KISA 문서가 공유하는 공격논문(Zou·Carlini·Greshake·Shumailov)이 OWASP/NISTAML/ATLAS 코드로 삼각 매핑됨. 국내 유일하게 Carlini 2024b(production LM 탈취)를 실무 체크리스트(logit-bias/logprobs 판별)로 번역한 자료.
 
 ---
