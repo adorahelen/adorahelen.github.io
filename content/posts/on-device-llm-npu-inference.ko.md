@@ -10,6 +10,8 @@ tags:
 summary: "온디바이스 LLM의 병목은 토큰 생성(decode)이 아니라 프롬프트 처리(prefill)다. NPU로 prefill을 평균 22.4배 가속하고 에너지를 30.7배 줄인 ASPLOS '25 논문(llm.npu)을 읽고, 온디바이스 서빙 설계에 무엇을 시사하는지 정리했다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/on-device-llm-npu-inference/)**
+
 > **논문**: Fast On-device LLM Inference with NPUs
 > **학회**: ASPLOS '25 (컴퓨터 구조/시스템 최고 학회)
 > **저자**: Daliang Xu 외 6인 (Peking University, BUPT)

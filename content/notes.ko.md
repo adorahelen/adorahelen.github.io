@@ -52,4 +52,12 @@ showTableOfContents: true
 
 ---
 
-영문판은 순차적으로 올리고 있습니다. 현재 [Abliteration 재현](https://adorahelen.github.io/posts/reproducing-abliteration-qwen25-3b/)과 [KISA 레드티밍 가이드 분석](https://adorahelen.github.io/posts/kisa-ai-redteaming-guide/)이 영문으로 있습니다.
+영문판은 순차적으로 올리고 있습니다. 현재 8편이 영문으로 있습니다 —
+[Abliteration 재현](https://adorahelen.github.io/posts/reproducing-abliteration-qwen25-3b/) ·
+[KISA 레드티밍 가이드](https://adorahelen.github.io/posts/kisa-ai-redteaming-guide/) ·
+[KISA 위협 대응 매뉴얼](https://adorahelen.github.io/posts/kisa-ai-threat-response-manual/) ·
+[안전정렬 우회](https://adorahelen.github.io/posts/llm-safety-alignment-bypass/) ·
+[RAG 보안](https://adorahelen.github.io/posts/rag-security-poisonedrag-ecosaferag/) ·
+[Gemma 3](https://adorahelen.github.io/posts/gemma3-technical-report/) ·
+[양자화·압축](https://adorahelen.github.io/posts/llm-quantization-and-compression/) ·
+[온디바이스 NPU](https://adorahelen.github.io/posts/on-device-llm-npu-inference/).

@@ -10,6 +10,8 @@ tags:
 summary: "LLM을 작고 빠르게 만드는 압축 축 다섯(양자화 / 프루닝 / 증류 / 저랭크 / KV캐시)을 정리하고, 실무에서 가장 자주 쓰는 양자화를 어떤 기준으로 고를지에 답한다. INT4에서 부동소수 마이크로스케일링(NVFP4/MXFP4)으로 옮겨가는 추세까지."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/llm-quantization-and-compression/)**
+
 > **주제**: LLM을 더 작게·빠르게 만드는 **압축 4+1 축**(양자화 / 프루닝 / 증류 / 저랭크 / KV캐시)과, 그중 실무 핵심인 **양자화의 종류**(비트 표현 · 생태계 포맷 · GGUF 접미사 · 보정 기법)를 공개 자료 수준에서 정리.
 > **관점**: 온디바이스·로컬 서빙 실무자용. "어떤 양자화를 고를까"에 바로 답하는 것이 목적.
 > **연결**: [LLM 안전정렬은 어디에 있고 어떻게 무뎌지나](/ko/posts/llm-safety-alignment-bypass/) §8의 "Q4 추론 vs bf16 수술" 메모리 차이의 **원리**가 여기 §2~3에 있다.

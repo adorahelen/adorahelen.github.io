@@ -9,6 +9,8 @@ tags:
 summary: "Gemma 3 테크니컬 리포트를 읽고 아키텍처 개선 세 가지와 그 대가를 정리했다. 27B Dense 모델이 Chatbot Arena Elo 1338로 671B MoE·405B 모델을 앞선 결과를 어떻게 만들었는지, 로컬 서빙 관점에서 무엇이 의미 있는지."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/gemma3-technical-report/)**
+
 > **논문**: Gemma 3 Technical Report
 > **출처**: arXiv:2503.19786v1 (2025년 3월)
 > **저자**: Gemma Team, Google DeepMind (Aishwarya Kamath, Johan Ferret 외 다수)
