@@ -9,6 +9,8 @@ tags:
 summary: "SWE-bench 류 코딩 벤치마크는 버그 수정 같은 국소 태스크만 측정한다. ProgramBench는 실행 파일과 문서만 주고 같은 동작을 하는 코드를 처음부터 재구현하게 한다 — 최신 모델 9종이 어디서 무너지는지 정리했다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/programbench-rebuild-programs/)**
+
 > **논문**: ProgramBench: Can Language Models Rebuild Programs From Scratch?
 > **학회**: arXiv 2605.03546v1 (2026년 5월)
 > **저자**: John Yang, Kilian Lieret 외 (Meta FAIR, Stanford, Harvard)

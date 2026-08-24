@@ -10,6 +10,8 @@ tags:
 summary: "정확도 단일 지표로 오픈 추론 LLM을 비교하면 실제 배포 선택에 쓸 수 없다. VRAM과 지연시간을 함께 가중한 평가에서, 1위 모델과 0.03점 차이로 VRAM은 3.2배 적고 지연은 2배 빠른 모델이 나온다 — 온프레미스 모델 선택의 실제 기준."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/deployment-aware-llm-evaluation/)**
+
 > **논문**: Unified Deployment-Aware Evaluation of Open Reasoning Language Models
 > **출처**: arXiv:2604.07035v2 (2025년 4월)
 > **저자**: Md Motaleb Hossen Manik, Ge Wang

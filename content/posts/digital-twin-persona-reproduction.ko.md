@@ -9,6 +9,8 @@ tags:
 summary: "한 사람의 말투·성격·판단을 LLM으로 재현하는 디지털 트윈은 어디까지 되고 어디서 무너지나. 1,000명 생성 에이전트 시뮬레이션·Twin-2K-500·Stanford SCALE 메가스터디를 묶어 읽고, 적대 검증을 통과한 주장만 남겼다."
 ---
 
+> 🇺🇸 **[English version of this post →](https://adorahelen.github.io/posts/digital-twin-persona-reproduction/)**
+
 > **주제**: "한 사람(본인 또는 고인)의 말투·성격·판단을 LLM으로 재현"하는 디지털 트윈/griefbot의 **재현 충실도**를, 홍보가 아니라 벤치마크·재현 실패 논문으로 회의적 평가.
 > **다루는 논문**: Generative Agent Simulations of 1,000 People(2411.10109) · Twin-2K-500(2505.17479) · Stanford SCALE 메가스터디(2509.19088) · BehaviorChain(2502.14642, ACL 2025 Findings) · TwinVoice(2510.25536) · Persona Drift(2402.10962, COLM 2024) · Flatten/Essentialize(2402.01908, Nature MI) · Second Me(2503.08102)
 > **검증**: 딥리서치 3표 적대검증(2/3 반증 시 폐기) 통과분만 반영. 폐기된 강한 주장은 하단 [검증 메모](#검증-메모--폐기된-주장) 참조.
@@ -86,7 +88,7 @@ summary: "한 사람의 말투·성격·판단을 LLM으로 재현하는 디지�
 
 ## 6. 프로젝트별 응용 방안
 
-- **로컬에서 "분신" 실현 가능성 + 빌드 스택(RAG + 가벼운 QLoRA + Qwen7B, on 5070Ti/5090)**은 실무 관점으로 [local-llm-master의 디지털 트윈 노트](https://github.com/adorahelen/local-llm-master)에 별도 정리. 요지: **병목은 하드웨어가 아니라 데이터·방법**이므로, fine-tune 몰빵보다 **실제 로그 RAG + 얕은 스타일 LoRA**가 안전.
+- **로컬에서 "분신" 실현 가능성 + 빌드 스택(RAG + 가벼운 QLoRA + Qwen7B, on 5070Ti/5090)**은 실무 관점으로 별도 비공개 노트로 정리. 요지: **병목은 하드웨어가 아니라 데이터·방법**이므로, fine-tune 몰빵보다 **실제 로그 RAG + 얕은 스타일 LoRA**가 안전.
 - **평가 습관**: 사내에서 페르소나/롤플레이 모델을 만들면, 성공 판정에 반드시 **test-retest 천장 대비 정규화 + OOD 셋**을 포함(in-distribution 점수만 믿지 말 것).
 
 ## 7. 종합 평가

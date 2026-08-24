@@ -52,11 +52,14 @@ showTableOfContents: true
 
 ---
 
-영문판은 순차적으로 올리고 있습니다. 현재 **15편**이 영문으로 있습니다 —
+영문판은 순차적으로 올려 왔고, 이제 **국문 19편 전부**에 영문판이 있습니다 —
 [AI SOC](https://adorahelen.github.io/posts/ai-augmented-defense-ai-soc/) ·
 [AI를 이용한 레드티밍](https://adorahelen.github.io/posts/ai-augmented-red-teaming/) ·
 [레드티밍 실무](https://adorahelen.github.io/posts/ai-red-teaming-practice/) ·
 [AI 시스템 방어](https://adorahelen.github.io/posts/ai-system-defense/) ·
+[배포 인지 LLM 평가](https://adorahelen.github.io/posts/deployment-aware-llm-evaluation/) ·
+[디지털 트윈·페르소나 재현](https://adorahelen.github.io/posts/digital-twin-persona-reproduction/) ·
+[파인튜닝 LLM 취약점 수정](https://adorahelen.github.io/posts/finetuned-llm-vulnerability-repair/) ·
 [Gemma 3](https://adorahelen.github.io/posts/gemma3-technical-report/) ·
 [KISA 레드티밍 가이드](https://adorahelen.github.io/posts/kisa-ai-redteaming-guide/) ·
 [KISA 위협 대응 매뉴얼](https://adorahelen.github.io/posts/kisa-ai-threat-response-manual/) ·
@@ -64,6 +67,7 @@ showTableOfContents: true
 [안전정렬 우회](https://adorahelen.github.io/posts/llm-safety-alignment-bypass/) ·
 [멀티모달·에이전트](https://adorahelen.github.io/posts/multimodal-agent-red-teaming/) ·
 [온디바이스 NPU](https://adorahelen.github.io/posts/on-device-llm-npu-inference/) ·
+[ProgramBench](https://adorahelen.github.io/posts/programbench-rebuild-programs/) ·
 [RAG 보안](https://adorahelen.github.io/posts/rag-security-poisonedrag-ecosaferag/) ·
 [Abliteration 재현](https://adorahelen.github.io/posts/reproducing-abliteration-qwen25-3b/) ·
 [전통 블루티밍](https://adorahelen.github.io/posts/traditional-blue-teaming/) ·
