@@ -1,145 +1,96 @@
 ---
-title: "Network Recon on Public Wi-Fi — Passive Capture, Active Scanning, and the Line of Authorization"
-date: 2026-09-26T19:00:00+09:00
+title: "One Nationwide Network Behind Every Starbucks — Korea's KT-Managed Hotspot Architecture and Public-WiFi Risk"
+date: 2026-09-27T10:00:00+09:00
 tags:
   - security
   - network
-  - wireshark
-  - nmap
-  - arp
-  - ethics
-summary: "Can packet capture and host discovery tell you who is connected and what they are doing? How switch/wireless isolation and encryption block eavesdropping, the intrusiveness gap between -sn and -sS, and why authorization — not capability — is the real boundary of the exercise."
+  - wifi
+  - evil-twin
+  - cidr
+  - privacy
+summary: "Two Starbucks 30km apart handed out the same gateway IP, MAC, and address range. This unpacks the KT-operated nationwide managed WiFi (store AP → backhaul → central core), reads the /12 vs /24 through the netmask, and covers public-WiFi risks like evil twins and missing client isolation — with defenses."
 ---
 
 > 🇰🇷 **[이 글의 한국어판 →](/ko/posts/network-recon-public-wifi/)**
 
-> **Type**: Lower-layer (L2–L4) network lab notes + ethics/legal analysis.
-> **In one line**: The same command changes character with the **venue (authorization)**. ARP is the canonical way to enumerate assets, but seeing others' *activity* is doubly blocked by switch/wireless isolation and traffic encryption — and breaking that wall requires ARP spoofing (illegal interception).
+> **Type**: Measurement-based network-architecture analysis + public-WiFi threat/defense notes.
+> **In one line**: Two Starbucks branches 30km apart look like the same network because **KT operates the whole chain as one managed WiFi** — and that architecture carries the classic public-network risks (evil twin, missing client isolation) alongside its convenience.
 
-> ⚠️ **Scope note**: All captured measurements below are **the author's own device traffic**. Other devices' names, MACs, and real IPs (personally identifiable) are anonymized (`Device A`, `XX:XX:...`), and active scanning / interception techniques are described conceptually, assuming a **network you own or are explicitly authorized to test**.
+> ⚠️ **Scope & ethics**: The concrete observations below come mainly from **connecting normally with my own device and then inspecting my own interface, gateway, and neighbor cache** (passive). Active scanning / interception techniques are described conceptually, assuming a **network you own or are authorized to test**. Third-party device identifiers (names, full MACs) are anonymized.
 
 ---
 
-## 1. Three Questions
+## 1. Two Locations 30km Apart, One Network
 
-Connected to a public café Wi-Fi, can you determine:
+I connected at the Paju Geumchon branch (2026-09-26) and the Gwanghwamun branch (2026-09-27) and checked the interface and gateway.
 
-1. How many devices are connected to this network?
-2. What IP/MAC does each device have?
-3. What is each device doing?
+| Field | Paju | Gwanghwamun | Difference |
+| --- | --- | --- | --- |
+| My IP | 172.30.96.14 | 172.30.59.196 | DHCP reassignment |
+| Netmask | /12 | /12 | same |
+| Gateway IP | 172.30.1.254 | 172.30.1.254 | same |
+| Gateway MAC | 00:17:c3:XX:XX:XX | 00:17:c3:XX:XX:XX | **same (OUI match)** |
 
-Up front: ①/② are partially answerable (in an authorized environment), but ③ is impossible by legitimate means because of a triple defense — **switch/wireless isolation + host firewalls + traffic encryption**. And a public café has **no administrator to authorize a scan**, which is the fundamental difference from a corporate lab.
+The IP changes per DHCP lease, but the **gateway MAC was identical at both branches**. A MAC is a device-unique value, so two stores 30km apart share the **same (or identically standardized) gateway**. That breaks the assumption of "an independent router per store."
 
-## 2. Tools and Environment
+## 2. The Netmask Explains It
 
-- **tcpdump / tshark** — packet capture and analysis (`brew install --formula wireshark` installs tshark without the GUI)
-- **nmap** — host discovery
-- **arp** — local ARP cache inspection
+An IP is 32 bits, and the netmask (`/N`) sets how many leading bits are the "network label."
 
-The key variable in a public AP is **client isolation (AP isolation)**. Most café APs enable it so patrons on the same AP cannot see each other.
+- **`/12`** = first 12 bits are network → `172.16.0.0 – 172.31.255.255`, about **1,048,576** addresses.
+- **`/24`** = first 24 bits are network → `172.30.59.0 – .255`, **256** addresses.
 
-## 3. Step 1 — Passive Capture of My Own Traffic (Legitimate Anywhere)
+`172.30.96.14` (Paju) and `172.30.59.196` (Gwanghwamun) are the **same network under `/12`** (both inside 172.16–31) but **different segments under `/24`** (.96 vs .59). The chain uses one nationwide `/12` plan and hands out different `/24` slices per location/pool — a **two-tier structure**.
 
-The most legitimate starting point is to observe only **the traffic my own device sends and receives**. With capture running, I generated a DNS query and fresh HTTP/HTTPS connections to watch the textbook flow.
+## 3. Architecture: KT-Operated Nationwide Managed WiFi
 
-```bash
-tshark -i en0 -w lab.pcap -q &
-dig +short example.com
-curl -s http://neverssl.com -o /dev/null   # plaintext HTTP
-curl -s https://example.com -o /dev/null    # HTTPS (TLS)
+Starbucks Korea's in-store WiFi is **provided by KT**. The secure SSID is `KT_starbucks_Secure`, and the access portal sits on KT's (olleh) domain. So Starbucks does not place an independent router in each store — it **outsources to a carrier-managed WiFi**.
+
+```
+🌐 Internet
+   ↑
+HQ / IDC core (redundant, HA)
+ [Wireless Controller WLC] [Central DHCP/AAA] [Gateway 172.30.1.254]
+   ↑  Carrier backhaul · private-network tunnel (CAPWAP / GRE)
+   ↑
+🏬 Paju store AP     🏬 Gwanghwamun store AP     🏬 Hundreds of other stores
+ 172.30.96.0/24       172.30.59.0/24              each a different /24
 ```
 
-Five observations:
+- Store APs are **thin/edge devices** that tunnel client traffic up to the central core.
+- The gateway, DHCP, and auth live **centrally as one**, so the whole country meets the same `172.30.1.254`.
+- Physically hundreds of APs are scattered; **logically it is one network** — the same principle as a corporate branch VPN unifying every office into one private range.
 
-1. **ARP** — MAC address resolution (`who-has` / `is-at`) between the gateway and my device.
-2. **DNS** — the `example.com` query returned multiple IPs (CDN / load balancing).
-3. **TCP 3-way** — `SYN → SYN,ACK → ACK`, with Seq/Ack numbers and MSS/window-scale negotiation.
-4. **TLS ClientHello** — the **SNI (server name) is exposed in cleartext**; everything after is `Application Data` (ciphertext).
-5. **Plaintext HTTP** — the `GET` method, host, path, and User-Agent are all visible.
+**Why run it this way?** Outsourcing removes per-store IT staffing, enables nationwide central management, and lets a single name+email login work anywhere (capturing customer data). Notably, early Starbucks WiFi was open (unencrypted) and criticized for it; KT later introduced a secure-connection SSID to improve this.
 
-**Lesson:** on public Wi-Fi, plaintext HTTP exposes its full content, while HTTPS leaks only the SNI. This is exactly why HTTPS/VPN are essential on public networks.
+## 4. Why It Is Risky
 
-## 4. Step 2 — Host Discovery, and How Privilege Changed the Result
+**① A target for evil twins.** My device treats Paju and Gwanghwamun as the "same saved WiFi" and auto-joins/auto-trusts. If an attacker stands up a fake AP cloning this SSID and gateway setup, devices can join automatically. And since the gateway MAC is uniform nationwide, **MAC alone cannot distinguish real from fake.** Evil-twin attack and detection has been studied extensively since 2005.
 
-The same command `nmap -sn` produced **completely different results depending on privilege** (in an authorized test environment).
+**② Client isolation and cleartext exposure.** If a managed hotspot does not enforce in-store client isolation, customers on the same segment can enumerate each other. Even with isolation on, devices broadcast **their names and shared-service info in cleartext via mDNS/Bonjour (UDP 5353)**. So isolation alone does not fully protect privacy.
 
-| Method | Probe technique | Result | Cause |
-| --- | --- | --- | --- |
-| non-root `nmap -sn` | ICMP + TCP SYN(80,443) | almost no responses | host firewalls silently drop |
-| sudo `nmap -sn` | **ARP requests** | many found | ARP cannot be ignored |
-| `arp -a` | local cache | neighbors left by the scan | — |
+## 5. Defenses — What a User Can Do
 
-**Key point:** on the same L2 segment, the truth of host discovery is not ICMP/TCP but **ARP**. A device may ignore ICMP, but if it ignores ARP it cannot communicate at all, so it must respond. That is why local-segment discovery uses `sudo nmap -sn` or `arp-scan`.
+- **Use the secure SSID** — prefer a secure connection like `KT_starbucks_Secure` over the open one (encryption).
+- **Always use a VPN** — tunneling the public-network segment neutralizes both evil twins and missing isolation.
+- **Turn off auto-join** — disable "auto-join" for saved public WiFi to prevent auto-connecting to a fake AP.
+- **Do sensitive work over cellular** — banking / internal access over LTE/5G when possible.
+- **Check for HTTPS** — plaintext HTTP exposes content directly; HSTS blocks SSL stripping.
 
-Anonymized example result:
+## 6. Methodology and Ethics
 
-| Device | MAC (example) | Type |
-| --- | --- | --- |
-| Device A | XX:XX:XX:XX:XX:XX | smartphone (randomized MAC) |
-| Device B | XX:XX:XX:XX:XX:XX | laptop |
-| Gateway | XX:XX:XX:XX:XX:XX | router |
+The concrete figures here come mainly from **connecting normally with my own device** and reading my own interface, gateway, and neighbor cache via `ifconfig`/`ip`/`arp` (passive). Active host enumeration (`nmap -sn`) and interception like ARP spoofing must only be done on **a network you own or are explicitly authorized to test**, and appear here only as concept. Third-party device identifiers and the gateway MAC's lower bytes are masked. Whether an active action is permitted is decided by **authorization, not capability**.
 
-> **What if it were a public AP?** With client isolation on, even an ARP scan finds nothing but the gateway, because the switch/AP will not forward L2 frames between patrons. So ①/② are effectively unanswerable — and that is normal.
+## Sources
 
-**MAC randomization:** modern phones randomize their MAC for privacy (second nibble `2/6/A/E`), defeating vendor (OUI) tracking. Only fixed infrastructure (IP cameras, wired terminals) exposes a real MAC and can be tracked long-term.
-
-## 5. The Intrusiveness Scale — How Far Is Allowed
-
-Network actions form a scale of intrusiveness, and the venue (authorization) determines what is permitted. **This table is the core of this post.**
-
-| Action | Character | My own network | Public AP (unauthorized) |
-| --- | --- | --- | --- |
-| Capture my own traffic | passive · mine | OK | OK |
-| Observe broadcast/mDNS | passive · receive only | OK | mostly OK |
-| `nmap -sn` (host discovery) | active · low | OK | **gray area** |
-| `nmap -sS` (port scan) | active · high | OK | **over the line** |
-| ARP spoofing (MITM) | interception attack | can experiment | illegal |
-
-The dividing line is **"presence check" vs "internal recon."**
-
-- **`-sn`** only asks "is there a device at that address?" Like knocking to see if someone is home — it does not look inside. Even unauthorized it is a gray area.
-- **`-sS`** asks "what ports/services does that device open?" Opening every door and window one by one — the start of vulnerability recon. Unauthorized port scanning of others' devices crosses into intrusion-attempt territory from here.
-
-So **the line not to cross on a public AP starts at `-sS` port scanning**; `-sn` is a gray area best avoided without authorization. Active scanning should only be done on **(a) a network you own, or (b) one you are explicitly authorized to test**.
-
-## 6. Why Seeing "Activity" Requires an Attack (Concept)
-
-The key misconception: it is not that "you would see it, just encrypted" — **other people's packets never even reach your NIC** before encryption is a factor.
-
-Old hubs copied every frame to all ports, so promiscuous mode saw everyone's traffic. Modern switches forward only to the destination port via a MAC address table (CAM), and wireless public APs add **client isolation** for double isolation. So passive capture only sees broadcast/multicast and your own traffic.
-
-**ARP spoofing (concept).** ARP has no authentication, so a forged reply is accepted and updates the cache. If an attacker floods both the victim and gateway with "the other's MAC is my MAC," each side's frames route through the attacker (MITM). Stealthy interception forwards received packets on to the real destination (IP forwarding) so the victim notices nothing; without forwarding it becomes denial of service, not eavesdropping.
-
-**Yet the content is mostly still ciphertext.** Even intercepted, HTTPS/TLS remains encrypted; what is visible is metadata — SNI, volume, peer IP. Today the practical yield of MITM is closer to "plaintext-protocol exposure" and "metadata collection."
-
-## 7. Defenses and Self-Protection
-
-**Network (AP) side**
-
-| Technique | Principle |
-| --- | --- |
-| Client Isolation | blocks L2 traffic between same-AP users |
-| DAI (Dynamic ARP Inspection) | discards forged ARP by comparing to DHCP bindings |
-| DHCP Snooping | blocks bindings off untrusted ports; DAI's basis |
-| 802.1X | authentication at connect blocks unauthorized use |
-
-**User (my) side**
-
-- **Use a VPN** — encrypts the public-network segment in a tunnel; even under MITM, content and SNI are hidden.
-- **HTTPS only** — avoid plaintext HTTP; HSTS blocks SSL stripping.
-- **Defer sensitive work** — avoid banking / internal systems on public networks, or use a VPN first.
-- **Turn off sharing** — disable unnecessary discovery/sharing (AirDrop, etc.).
-
-## 8. Conclusion — What the Venue Changes
-
-The same technical action changes character with the venue (authorization). Asset enumeration is canonically ARP-based, but others' *activity* is doubly blocked by isolation and encryption.
-
-- **How many?** — In an isolated environment, usually only the gateway is visible. The exact count cannot be known without authorization.
-- **Each IP/MAC?** — Even if observed, it is third-party PII and cannot be enumerated or published.
-- **Each activity?** — Impossible by legitimate means. Interception requires illegal MITM, which is not performed.
-
-**In one line:** whether an active action is permitted is determined by **authorization, not capability**. On public Wi-Fi, the safe line is **your own device, your own traffic, and observing network settings**. If you need to practice active scanning or interception, do it in an authorized environment such as **your own home lab**.
+- [Evil Twin Attack in Wi-Fi Networks: Evolution, Mutation Taxonomy, and Exposure Time Analysis (2005–2026), MDPI Electronics](https://doi.org/10.3390/electronics15153432)
+- [DPETAs: Detection and Prevention of Evil Twin Attacks on Wi-Fi Networks, Springer](https://link.springer.com/chapter/10.1007/978-981-16-9012-9_45)
+- [WPFD: Active User-Side Detection of Evil Twins, MDPI Applied Sciences](https://www.mdpi.com/2076-3417/12/16/8088)
+- [Bypassing WiFi Client Isolation, Pulse Security](https://pulsesecurity.co.nz/articles/bypassing-wifi-client-isolation)
+- [You're probably overestimating public Wi-Fi 'client isolation', dev.to](https://dev.to/lafine_systemsdesign/youre-probably-overestimating-public-wi-fi-client-isolation-2ao0)
+- [Starbucks WiFi security strengthened with KT (Korean), Newsworks](https://www.newsworks.co.kr/news/articleView.html?idxno=774146)
+- [Starbucks WiFi secure-connection guide (Korean), KT olleh](https://first.wifi.olleh.com/starbucks/secure_kor.html)
 
 ---
 
-*This post is a study/defense-oriented summary and does not encourage unauthorized scanning or interception of others' networks or devices.*
+*This post is a study/defense-oriented write-up and does not encourage unauthorized scanning or interception of others' networks or devices. It is not a vulnerability report against a specific operator, but a user-side understanding of public-WiFi architecture.*
